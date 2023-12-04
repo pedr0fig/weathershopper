@@ -1,11 +1,11 @@
 name: Challenge Tests
-on:
-    workflow_dispatch:
-    push:
-        branches:
-            - master
+# on:
+# workflow_dispatch:
+# push:
+#     branches:
+#         - master
 
-# on: [push]
+on: [push]
 # on:
 #     workflow_dispatch:
 #     push:
