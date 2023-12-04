@@ -1,0 +1,26 @@
+{
+    "name": "weathershopper",
+    "devDependencies": {
+        "@wdio/allure-reporter": "8.24.2",
+        "@wdio/cli": "8.16.18",
+        "@wdio/jasmine-framework": "8.24.6",
+        "@wdio/local-runner": "8.14.0",
+        "@wdio/spec-reporter": "8.24.2",
+        "allure-commandline": "2.24.1",
+        "prettier": "3.1.0"
+    },
+    "scripts": {
+        "tests": "wdio run ./wdio.conf.js",
+        "tests:docker": "./scripts/run-tests-in-docker.sh",
+        "report:allure": "allure generate ./allure-results --clean && allure open ./allure-report",
+        "report:allure:cleanup": "rm -rf allure-report && rm -rf allure-results"
+    },
+    "prettier": {
+        "printWidth": 120,
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true,
+        "trailingComma": "none",
+        "arrowParens": "avoid"
+    }
+}

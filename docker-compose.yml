@@ -1,0 +1,52 @@
+version: '1.0'
+x-common-tests-configuration: &common-tests-configuration
+    image: tests
+    build:
+        context: .
+    depends_on:
+        - selenium-hub
+        - chrome
+
+x-chrome: &chrome
+    image: seleniarm/node-chromium:4.12.1-20230926
+    container_name: chrome
+    shm_size: 1G
+    depends_on:
+        - selenium-hub
+    environment:
+        - SE_EVENT_BUS_HOST=selenium-hub
+        - SE_EVENT_BUS_PUBLISH_PORT=4442
+        - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+        - SE_NODE_GRID_URL=http://localhost:4444
+        - SE_NODE_MAX_SESSIONS=1
+        - SE_NODE_SESSION_TIMEOUT=1800
+        - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+        - JAVA_OPTS=-Dselenium.LOGGER.level=WARNING
+        - VNC_NO_PASSWORD=1
+
+services:
+    chrome:
+        <<: *chrome
+        container_name: chrome
+        ports:
+            - '6901:5900'
+            - '7901:7900'
+
+    selenium-hub:
+        image: seleniarm/hub:4.12.1-20230926
+        container_name: selenium-hub
+        ports:
+            - '4442:4442'
+            - '4443:4443'
+            - '4444:4444'
+
+    static-analysis:
+        build:
+            context: .
+        command: bash -c 'npm run lint'
+
+    tests:
+        <<: *common-tests-configuration
+        # The selenium hub services can take some seconds to be fully up and running
+        # so we are using this open source solution to check when it's ready and then launch the tests
+        command: bash -c './scripts/wait-for-it.sh selenium-hub:4444 -t 10 --strict -- echo "Selenium Hub is ready!" && npm run tests -- --hostname selenium-hub'
