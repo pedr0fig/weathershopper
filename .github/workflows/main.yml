@@ -1,10 +1,11 @@
 name: Challenge Tests
-# on: [push]
+
 on:
+    workflow_dispatch:
     push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+        branches:
+            - '**'
+
 jobs:
     tests:
         timeout-minutes: 60
@@ -19,3 +20,31 @@ jobs:
               run: npm ci
             - name: Run tests
               run: npm run tests:docker
+            - name: List files in the repository
+              run: ls ${{ github.workspace }}
+
+            - name: Get Allure History
+              uses: actions/checkout@v3
+              if: always()
+              continue-on-error: true
+              with:
+                  ref: gh-pages
+                  path: gh-pages
+
+            - name: Generate Allure Report
+              uses: simple-elf/allure-report-action@master
+              if: always()
+              with:
+                  allure_results: allure-results
+                  gh_pages: gh-pages
+                  allure_report: allure-report
+                  allure_history: allure-history
+                  keep_reports: 20
+
+            - name: Deploy Allure Report to GitHub Pages
+              if: always()
+              uses: peaceiris/actions-gh-pages@v2
+              env:
+                  PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  PUBLISH_BRANCH: gh-pages
+                  PUBLISH_DIR: allure-history

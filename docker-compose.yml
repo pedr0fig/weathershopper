@@ -50,3 +50,6 @@ services:
         # The selenium hub services can take some seconds to be fully up and running
         # so we are using this open source solution to check when it's ready and then launch the tests
         command: bash -c './scripts/wait-for-it.sh selenium-hub:4444 -t 10 --strict -- echo "Selenium Hub is ready!" && npm run tests -- --hostname selenium-hub'
+        volumes:
+            - ./screenshots:/app/screenshots
+            - ./allure-results:/app/allure-results
