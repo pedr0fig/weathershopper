@@ -24,6 +24,10 @@
     - [Spec](#spec)
     - [Allure Report](#allure-report)
     - [Screenshots](#screenshots)
+  - [CI / CD](#ci--cd)
+    - [GitHub Actions](#github-actions)
+    - [GitHub Pages](#github-pages)
+      - [Allure Report](#allure-report-1)
   - [Updates:](#updates)
   - [Challenge notes](#challenge-notes)
   - [Notes](#notes)
@@ -143,6 +147,25 @@ This project also has screenshots integrated with the Allure report. Those scree
 Note: We should take a screenshot only when the test fails, but currently due to this bug it is not possible:
 
 -   [Jasmine afterTest() wdio hook returns wrong passed value for failed spec as passed=true](https://github.com/webdriverio/webdriverio/issues/11684)
+
+## CI / CD
+
+### GitHub Actions
+
+-   This project is integrated with [GitHub Actions](https://docs.github.com/en/actions/quickstart). On every commit the tests will be triggered. The tests can also be triggered manually by clicking in the `Run workflow` button of the `Challenge Tests` workflow.
+
+### GitHub Pages
+
+-   This project is also integrated with [GitHub Pages](https://pages.github.com/).
+
+#### Allure Report
+
+-   The Allure Report is integrated with GitHub Pages. The Allure Report is available here: [Allure Report](https://pedr0fig.github.io/weathershopper/)
+
+References:
+
+-   [How to create a GitHub gh-pages branch in an existing repository](https://blog.ediri.io/how-to-create-a-github-gh-pages-branch-in-an-existing-repository)
+-   [Host your Automation Allure Report on GitHub Pages with GitHub Actions](https://dev.to/sadia/host-your-automation-allure-report-on-github-pages-with-github-actions-56a)
 
 ## Updates:
 
