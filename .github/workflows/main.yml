@@ -27,11 +27,13 @@ jobs:
               run: npm ci
             - name: Run tests
               run: npm run tests:docker
-            - uses: actions/upload-artifact@master
-              with:
-                  name: allure-results
-                  path: allure-results
-                  retention-days: 20
+            # - uses: actions/upload-artifact@master
+            #   with:
+            #       name: allure-results
+            #       path: allure-results
+            #       retention-days: 20
+            - name: List files in the repository
+              run: ls ${{ github.workspace }}
 
             - name: Get Allure History
               uses: actions/checkout@v3
