@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Tue Jul 09 09:23:38 GMT 2024","Tue Jul 09 09:23:58 GMT 2024","20012","","WeatherShopper challenge","","","","should buy moisturizers if temperature is below 19 or sunscreens if above 34 degrees",""
