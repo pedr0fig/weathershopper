@@ -1,4 +1,4 @@
-FROM node:20.10.0-alpine
+FROM node:22.4.0-alpine
 
 LABEL maintainer="pedr0fig"
 

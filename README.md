@@ -30,7 +30,6 @@
       - [Allure Report](#allure-report-1)
   - [Updates:](#updates)
   - [Challenge notes](#challenge-notes)
-  - [Notes](#notes)
 
 ## Objective
 
@@ -193,9 +192,3 @@ References:
 -   Some extra comments:
     -   To help in any required debugging, it is printed to the console some useful information.
     -   No hardcoded values were used. All dynamic information (strings and values) are stored in constant files.
-
-## Notes
-
-Currently (due to some bug) to run tests in docker, in the `package.json` file, these package versions must be used:
-`"@wdio/cli": "8.16.18"`
-`"@wdio/local-runner": "8.14.0"`
