@@ -8,7 +8,7 @@ x-common-tests-configuration: &common-tests-configuration
         - chrome
 
 x-chrome: &chrome
-    image: seleniarm/node-chromium:4.12.1-20230926
+    image: seleniarm/node-chromium:4.20.0-20240427
     container_name: chrome
     shm_size: 1G
     depends_on:
@@ -33,7 +33,7 @@ services:
             - '7901:7900'
 
     selenium-hub:
-        image: seleniarm/hub:4.12.1-20230926
+        image: seleniarm/hub:4.20.0-20240427
         container_name: selenium-hub
         ports:
             - '4442:4442'
@@ -49,7 +49,7 @@ services:
         <<: *common-tests-configuration
         # The selenium hub services can take some seconds to be fully up and running
         # so we are using this open source solution to check when it's ready and then launch the tests
-        command: bash -c './scripts/wait-for-it.sh selenium-hub:4444 -t 10 --strict -- echo "Selenium Hub is ready!" && npm run tests -- --hostname selenium-hub'
+        command: bash -c './scripts/wait-for-it.sh selenium-hub:4444 -t 10 --strict -- echo "Selenium Hub is ready!" && npm run tests -- --hostname selenium-hub --port 4444'
         volumes:
             - ./screenshots:/app/screenshots
             - ./allure-results:/app/allure-results
