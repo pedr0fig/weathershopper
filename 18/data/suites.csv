@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Dec 05 00:59:26 GMT 2023","Tue Dec 05 00:59:39 GMT 2023","13143","","WeatherShopper challenge","","","","should buy moisturizers if temperature is below 19 or sunscreens if above 34 degrees",""
-"passed","Tue Dec 05 00:59:26 GMT 2023","Tue Dec 05 00:59:26 GMT 2023","311","","WeatherShopper challenge","","","","""before all"" hook",""
