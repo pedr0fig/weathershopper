@@ -5,13 +5,13 @@ const webPage = new WebPage();
 module.exports = class WebUtils {
     // Switch back to the main page.
     async switchToFrameNull() {
-        await browser.switchToFrame(null);
+        await browser.switchFrame(null);
     }
 
     // Select the payment form frame.
     async selectPayFormFrame() {
         await (await webPage.payFormFrame()).waitForDisplayed();
-        await browser.switchToFrame(await webPage.payFormFrame());
+        await browser.switchFrame(await webPage.payFormFrame());
     }
 
     // Generic function used to perform button clicks.
