@@ -54,7 +54,8 @@ exports.config = {
     //
     capabilities: [
         {
-            browserName: 'chrome'
+            browserName: 'chrome',
+            "wdio:enforceWebDriverClassic": true,
         }
     ],
 
