@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Fri Mar 01 23:32:34 GMT 2024","Fri Mar 01 23:32:48 GMT 2024","13543","","WeatherShopper challenge","","","","should buy moisturizers if temperature is below 19 or sunscreens if above 34 degrees",""
-"passed","Fri Mar 01 23:32:34 GMT 2024","Fri Mar 01 23:32:34 GMT 2024","578","","WeatherShopper challenge","","","","""before all"" hook",""
