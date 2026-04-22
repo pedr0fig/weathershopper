@@ -12,10 +12,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Check out repository code
-              uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+              uses: actions/checkout@v6
+            - uses: actions/setup-node@v6
               with:
-                  node-version: '20.x'
+                  node-version: '25'
             - name: Install dependencies
               run: npm ci
             - name: Run tests
@@ -24,7 +24,7 @@ jobs:
               run: ls ${{ github.workspace }}
 
             - name: Get Allure History
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
               if: always()
               continue-on-error: true
               with:
@@ -43,8 +43,8 @@ jobs:
 
             - name: Deploy Allure Report to GitHub Pages
               if: always()
-              uses: peaceiris/actions-gh-pages@v2
-              env:
-                  PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  PUBLISH_BRANCH: gh-pages
-                  PUBLISH_DIR: allure-history
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_branch: gh-pages
+                  publish_dir: allure-history
